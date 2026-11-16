@@ -182,6 +182,25 @@ npm.cmd run dev
 
 Trên Windows, dùng `npm.cmd` nếu PowerShell chặn thực thi `npm.ps1`.
 
+## Chạy test
+
+Bộ unit test backend bao phủ các luồng nghiệp vụ chính của Trip, Matching & Pricing
+và Payment Service. Test dùng mock cho database, OSRM và RabbitMQ nên không cần khởi
+động Docker hay các dịch vụ bên ngoài.
+
+```powershell
+dotnet test SwiftRide.sln
+```
+
+Chạy test và xuất báo cáo coverage định dạng Cobertura:
+
+```powershell
+dotnet test SwiftRide.sln --collect:"XPlat Code Coverage"
+```
+
+GitHub Actions tự động chạy bộ test này cho mọi pull request và mỗi lần push lên
+nhánh `main`.
+
 ## Các lệnh Docker thường dùng
 
 Dừng nhưng giữ container:
